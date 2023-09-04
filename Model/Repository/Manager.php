@@ -27,14 +27,27 @@ class Manager {
     ///// METHODS /////
     ///////////////////
 
-    public function getAllDestinations() {
+    public function getAllDestinations():array
+    {
         $request = $this->db->query('SELECT * FROM destination');
         $destinationsData = $request->fetchAll(PDO::FETCH_ASSOC);
 
         return $destinationsData;
     }
 
-    public function getAllOperator() {
+    public function getDestinationById($id):array
+    {
+        $request = $this->db->prepare('SELECT * FROM destination WHERE id = :id');
+        $request->execute([
+            'id' => $id
+        ]);
+        $destinationData = $request->fetch(PDO::FETCH_ASSOC);
+
+        return $destinationData;
+    }
+
+    public function getAllOperator():array
+    {
         $request = $this->db->query('SELECT * FROM tour_operator');
         $operatorsData = $request->fetchAll(PDO::FETCH_ASSOC);
 
@@ -49,14 +62,27 @@ class Manager {
     //     return $operatorByDestinationData;
     // }
 
-    public function getOperatorByDestination() {
-        $request = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
-        $request->execute([
-            'id' => $_GET['tour_operator_id']
-        ]);
-        $operatorByDestinationData = $request->fetchAll(PDO::FETCH_ASSOC);
+    // public function getOperatorByDestination() {
+    //     $request = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
+    //     $request->execute([
+    //         'id' => $_GET['tour_operator_id']
+    //     ]);
+    //     $operatorByDestinationData = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return $operatorByDestinationData;
+    //     return $operatorByDestinationData;
+    // }
+
+    public function getOperatorByDestination(Destination $destination):array
+    {
+        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN destination 
+        ON tour_operator.id = destination.tour_operator_id 
+        WHERE destination.id = :id');
+        $request->execute([
+            'id' => $destination->getId()
+        ]);
+        $operatorsByDestinationData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $operatorsByDestinationData;
     }
 
     // public function getReviewByOperatorId() {

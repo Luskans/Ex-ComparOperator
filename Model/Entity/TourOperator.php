@@ -5,9 +5,9 @@ class TourOperator {
     private string $name;
     private string $link;
     private Certificate $certificate;
-    private array $destinations;
-    private array $reviews;
-    private array $scores;
+    private array $destinations = [];
+    private array $reviews = [];
+    private array $scores = [];
     private bool $isPremium;
 
     public function __construct(array $data)
@@ -58,7 +58,7 @@ class TourOperator {
     }
 
     public function setDestinations($destinations) {
-        $this->destinations = $destinations;
+        $this->destinations[] = $destinations;
         return $this;
     }
 
@@ -67,7 +67,7 @@ class TourOperator {
     }
 
     public function setReviews($reviews) {
-        $this->reviews = $reviews;
+        $this->reviews[] = $reviews;
         return $this;
     }
 
@@ -76,7 +76,7 @@ class TourOperator {
     }
 
     public function setScores($scores) {
-        $this->scores = $scores;
+        $this->scores[] = $scores;
         return $this;
     }
 
@@ -105,15 +105,15 @@ class TourOperator {
         if (isset($data["certificate"])) {
             $this->setCertificate($data["certificate"]);
         }
-        if (isset($data["destinations"])) {
-            $this->setDestinations($data["destinations"]);
-        }
-        if (isset($data["reviews"])) {
-            $this->setReviews($data["reviews"]);
-        }
-        if (isset($data["scores"])) {
-            $this->setScores($data["scores"]);
-        }
+        // if (isset($data["destinations"])) {
+        //     $this->setDestinations($data["destinations"]);
+        // }
+        // if (isset($data["reviews"])) {
+        //     $this->setReviews($data["reviews"]);
+        // }
+        // if (isset($data["scores"])) {
+        //     $this->setScores($data["scores"]);
+        // }
     }
 
 }

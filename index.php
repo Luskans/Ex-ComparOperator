@@ -16,16 +16,17 @@ $destinationsData = $manager->getAllDestinations(); ?>
                 <div class="destinationCard__image">
                     <img src="<?= $destination->getImage() ?>">
                 </div>
-                <h3 class="destinationCard__title">
+                <h3 class="destinationCard__location">
                     <?= $destination->getLocation(); ?>
                 </h3>
                 <p class="destinationCard__price">
                     <?= $destination->getPrice(); ?> €
                 </p>
-                <form action="./tourOperators.php" method="get">
-                    <input type="hidden" name="tour_operator_id" value="<?= $destination->getTour_operator_id() ?>">
+                <form action="./tours.php" method="get">
+                    <!-- <input type="hidden" name="tour_operator_id" value="<?= $destination->getTour_operator_id() ?>">
                     <input type="hidden" name="location" value="<?= $destination->getLocation() ?>">
-                    <input type="hidden" name="price" value="<?= $destination->getPrice() ?>">
+                    <input type="hidden" name="price" value="<?= $destination->getPrice() ?>"> -->
+                    <input type="hidden" name="destinationId" value="<?= $destination->getId() ?>">
                     <button type="submit">Voir les tours</button>
                 </form>
             </div>
