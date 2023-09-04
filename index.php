@@ -1,16 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./Utilities/Css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-</head>
-<body>
-    
-</body>
-</html>
+<?php include('./Template/template_header.php'); ?>
+
+<?php
+require_once('./Utilities/Config/db.php');
+require_once('./Model/Repository/Manager.php');
+require_once('./Model/Entity/Destination.php');
+
+$manager = new Manager($db);
+$destinationsData = $manager->getAllDestinations(); ?>
+
+<main class="destination mb-5">
+    <div class="container destinationCards d-flex flex-wrap gap-3">
+        <?php foreach ($destinationsData as $destinationData) {
+            $destination = new Destination($destinationData); ?>
+            <div class="destinationCard">
+                <div class="destinationCard__image">
+                    <img src="<?= $destination->getImage() ?>">
+                </div>
+                <h3 class="destinationCard__title">
+                    <?= $destination->getLocation(); ?>
+                </h3>
+                <p class="destinationCard__price">
+                    <?= $destination->getPrice(); ?> €
+                </p>
+                <form action="./tourOperators.php" method="get">
+                    <input type="hidden" name="tour_operator_id" value="<?= $destination->getTour_operator_id() ?>">
+                    <input type="hidden" name="location" value="<?= $destination->getLocation() ?>">
+                    <input type="hidden" name="price" value="<?= $destination->getPrice() ?>">
+                    <button type="submit">Voir les tours</button>
+                </form>
+            </div>
+        <?php } ?>
+    </div>
+</main>
+
+<?php include('./Template/template_footer.php'); ?>

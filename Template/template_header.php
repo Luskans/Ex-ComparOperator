@@ -11,6 +11,11 @@
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
-    
-</body>
-</html>
+
+    <header class="header mb-5">
+        <div class="header__logo"><img src=""></div>
+        <div class="container">
+            <div class="header__search">
+            </div>
+        </div>
+    </header>
