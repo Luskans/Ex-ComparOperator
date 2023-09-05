@@ -10,9 +10,13 @@ class TourOperator {
     private array $scores = [];
     private bool $isPremium;
 
-    public function __construct(array $data)
+    public function __construct(array $data, $destinationsData, $reviewsData, $scoresData, $certificateData)
     {
         $this->hydrate($data);
+        $this->addDestinations($destinationsData);
+        $this->addReviews($reviewsData);
+        $this->addScores($scoresData);
+        $this->addCertificate($certificateData);
     }
 
     ////// GETTER & SETTER /////
@@ -105,15 +109,31 @@ class TourOperator {
         if (isset($data["certificate"])) {
             $this->setCertificate($data["certificate"]);
         }
-        // if (isset($data["destinations"])) {
-        //     $this->setDestinations($data["destinations"]);
-        // }
-        // if (isset($data["reviews"])) {
-        //     $this->setReviews($data["reviews"]);
-        // }
-        // if (isset($data["scores"])) {
-        //     $this->setScores($data["scores"]);
-        // }
+        if (isset($data["isPremium"])) {
+            $this->setIsPremium($data["isPremium"]);
+        }
+    }
+
+    public function addDestinations(array $destinationsByOperatorId) {
+        foreach ($destinationsByOperatorId as $destinationByOperatorId) {
+            $this->destinations[] = new Destination($destinationByOperatorId);
+        }
+    }
+
+    public function addReviews(array $reviewsByOperatorId) {
+        foreach ($reviewsByOperatorId as $reviewByOperatorId) {
+            $this->reviews[] = new Review($reviewByOperatorId);
+        }
+    }
+
+    public function addScores(array $scoresByOperatorId) {
+        foreach ($scoresByOperatorId as $scoreByOperatorId) {
+            $this->scores[] = new Score($scoreByOperatorId);
+        }
+    }
+
+    public function addCertificate(array $certificateByOperatorId) {
+        $this->certificate = new Certificate($certificateByOperatorId);
     }
 
 }

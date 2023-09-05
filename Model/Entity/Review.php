@@ -39,14 +39,14 @@ class Review {
         return $this;
     }
 
-    public function getAuthor_id() {
-        return $this->author_id;
-    }
+    // public function getAuthor_id() {
+    //     return $this->author_id;
+    // }
 
-    public function setAuthor_id($author_id) {
-        $this->author_id = $author_id;
-        return $this;
-    }
+    // public function setAuthor_id($author_id) {
+    //     $this->author_id = $author_id;
+    //     return $this;
+    // }
 
     //// METHODS ////
 

@@ -35,142 +35,80 @@ class Manager {
         return $destinationsData;
     }
 
-    public function getDestinationById($id):array
+    public function getOperatorByDestinationId(int $id):array
     {
-        $request = $this->db->prepare('SELECT * FROM destination WHERE id = :id');
+        $request = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
         $request->execute([
             'id' => $id
         ]);
-        $destinationData = $request->fetch(PDO::FETCH_ASSOC);
+        $operatorsByDestinationIdData = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return $destinationData;
+        return $operatorsByDestinationIdData;
     }
 
-    public function getAllOperator():array
+    public function getDestinationsByOperatorId($id):array
     {
-        $request = $this->db->query('SELECT * FROM tour_operator');
-        $operatorsData = $request->fetchAll(PDO::FETCH_ASSOC);
+        $request = $this->db->prepare('SELECT * FROM destination WHERE tour_operator_id = :id');
+        $request->execute([
+            'id' => $id
+        ]);
+        $destinationsByOperatorIdData = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return $operatorsData;
+        return $destinationsByOperatorIdData;
     }
 
-    // public function getOperatorByDestination() {
-    //     $request = $this->db->query('SELECT * FROM tour_operator INNER JOIN destination 
-    //     ON tour_operator.id = destination.tour_operator_id');
-    //     $operatorByDestinationData = $request->fetchAll(PDO::FETCH_ASSOC);
-
-    //     return $operatorByDestinationData;
-    // }
-
-    // public function getOperatorByDestination() {
-    //     $request = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
-    //     $request->execute([
-    //         'id' => $_GET['tour_operator_id']
-    //     ]);
-    //     $operatorByDestinationData = $request->fetchAll(PDO::FETCH_ASSOC);
-
-    //     return $operatorByDestinationData;
-    // }
-
-    public function getOperatorByDestination(Destination $destination):array
+    public function getReviewsByOperatorId($id):array
     {
-        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN destination 
-        ON tour_operator.id = destination.tour_operator_id 
-        WHERE destination.id = :id');
+        $request = $this->db->prepare('SELECT * FROM review WHERE tour_operator_id = :id');
         $request->execute([
-            'id' => $destination->getId()
+            'id' => $id
         ]);
-        $operatorsByDestinationData = $request->fetchAll(PDO::FETCH_ASSOC);
+        $reviewsByOperatorIdData = $request->fetch(PDO::FETCH_ASSOC);
 
-        return $operatorsByDestinationData;
+        return $reviewsByOperatorIdData;
     }
 
-    // public function getReviewByOperatorId() {
-    //     $request = $this->db->query('SELECT * FROM review INNER JOIN tour_operator 
-    //     ON review.tour_operator_id = tour_operator.id');
-    //     $reviewByOperatorData = $request->fetchAll(PDO::FETCH_ASSOC);
-
-    //     return $reviewByOperatorData;
-    // }
-
-    public function getReviewByOperatorId(TourOperator $operator) {
-        $request = $this->db->prepare('SELECT * FROM review WHERE id = :id');
+    public function getScoresByOperatorId($id):array
+    {
+        $request = $this->db->prepare('SELECT * FROM score WHERE tour_operator_id = :id');
         $request->execute([
-            'id' => $operator->getId()
+            'id' => $id
         ]);
-        $reviewByOperatorData = $request->fetchAll(PDO::FETCH_ASSOC);
+        $scoresByOperatorIdData = $request->fetch(PDO::FETCH_ASSOC);
 
-        return $reviewByOperatorData;
+        return $scoresByOperatorIdData;
     }
 
-    // public function getScoreByOperatorId() {
-    //     $request = $this->db->query('SELECT * FROM score INNER JOIN tour_operator 
-    //     ON score.tour_operator_id = tour_operator.id');
-    //     $scoreByOperatorData = $request->fetchAll(PDO::FETCH_ASSOC);
-
-    //     return $scoreByOperatorData;
-    // }
-
-    // public function getScoreByOperatorId(TourOperator $operator) {
-    //     $request = $this->db->prepare('SELECT * FROM score WHERE id = :id');
-    //     $request->execute([
-    //         'id' => $operator->getId()
-    //     ]);
-    //     $scoreByOperatorData = $request->fetchAll(PDO::FETCH_ASSOC);
-
-    //     return $scoreByOperatorData;
-    // }
-
-    // public function getAuthorByReviewId(Review $review) {
-    //     $request = $this->db->prepare('SELECT * FROM author WHERE id = :id');
-    //     $request->execute([
-    //         'id' => $review->getAuthor_id()
-    //     ]);
-    //     $scoreByOperatorData = $request->fetchAll(PDO::FETCH_ASSOC);
-
-    //     return $scoreByOperatorData;
-    // }
-        
-
-    public function updateOperatorToPremium() {
-        $request = $this->db->prepare('UPDATE tour_operator SET isPremium = :isPremium WHERE id = :id');
+    public function getCertificateByOperatorId($id):array
+    {
+        $request = $this->db->prepare('SELECT * FROM certificate WHERE tour_operator_id = :id');
         $request->execute([
-            'isPremium' => true,
-            'author' => $_POST['author']
+            'id' => $id
         ]);
+        $certificateByOperatorIdData = $request->fetch(PDO::FETCH_ASSOC);
+
+        return $certificateByOperatorIdData;
     }
 
-    public function createTourOperator() {
-        $request = $this->db->prepare('INSERT INTO tour_operator (name, link) VALUES (:name, :link)');
+    public function getAuthorByReviewId($id):array
+    {
+        $request = $this->db->prepare('SELECT * FROM author WHERE tour_operator_id = :id');
         $request->execute([
-            'name' => $_POST['name'],
-            'link' => $_POST['link']
+            'id' => $id
         ]);
+        $authorByReviewIdData = $request->fetch(PDO::FETCH_ASSOC);
+
+        return $authorByReviewIdData;
     }
 
-    public function createDestination(Destination $destination) {
-        $request = $this->db->prepare('INSERT INTO destination (id, location, price) VALUES (:id, :location, :price)');
+    public function getAuthorByScoreId($id):array
+    {
+        $request = $this->db->prepare('SELECT * FROM author WHERE tour_operator_id = :id');
         $request->execute([
-            'id' => $destination->getId(),
-            'location' => $destination->getLocation(),
-            'price' => $destination->getPrice()
+            'id' => $id
         ]);
-    }
+        $authorByScoreIdData = $request->fetch(PDO::FETCH_ASSOC);
 
-    public function createReview() {
-        $request = $this->db->prepare('INSERT INTO review (message, author) VALUES (:message, :author)');
-        $request->execute([
-            'message' => $_POST['message'],
-            'author' => $_POST['author']
-        ]);
+        return $authorByScoreIdData;
     }
-
-    public function createScore() {
-        $request = $this->db->prepare('INSERT INTO review (message, author) VALUES (:message, :author)');
-        $request->execute([
-            'message' => $_POST['message'],
-            'author' => $_POST['author']
-        ]);
-    }
-
 }
