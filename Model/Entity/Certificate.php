@@ -1,7 +1,7 @@
 <?php
 
 class Certificate {
-    private int $expiresAt;
+    private string $expiresAt;
     private string $signatory;
 
     public function __construct(array $data)
@@ -33,8 +33,8 @@ class Certificate {
 
     public function hydrate(array $data)
     {
-        if (isset($data["expiresAt"])) {
-            $this->setExpiresAt($data["expiresAt"]);
+        if (isset($data["expires_at"])) {
+            $this->setExpiresAt($data["expires_at"]);
         }
         if (isset($data["signatory"])) {
             $this->setSignatory($data["signatory"]);

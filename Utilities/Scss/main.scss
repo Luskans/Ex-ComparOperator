@@ -1,3 +1,6 @@
+@import 'index.scss';
+@import 'tours.scss';
+
 body {
     margin: 0;
     padding: 0;
@@ -10,17 +13,6 @@ body {
     background-size: cover;
     background-position: center;
     height: 400px;
-}
-
-.destinationCard {
-    width: 350px;
-    height: 400px;
-    border: 1px solid grey;
-
-    img {
-        width: 100%;
-        object-fit: cover;
-    }
 }
 
 footer {

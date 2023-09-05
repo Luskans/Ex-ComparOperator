@@ -5,9 +5,10 @@ class Review {
     private string $message;
     private Author $author;
 
-    public function __construct(array $data)
+    public function __construct(array $data, Author $author)
     {
         $this->hydrate($data);
+        $this->setAuthor($author);
     }
 
     ////// GETTER & SETTER /////
@@ -39,15 +40,6 @@ class Review {
         return $this;
     }
 
-    // public function getAuthor_id() {
-    //     return $this->author_id;
-    // }
-
-    // public function setAuthor_id($author_id) {
-    //     $this->author_id = $author_id;
-    //     return $this;
-    // }
-
     //// METHODS ////
 
     public function hydrate(array $data)
@@ -57,9 +49,6 @@ class Review {
         }
         if (isset($data["message"])) {
             $this->setMessage($data["message"]);
-        }
-        if (isset($data["author"])) {
-            $this->setAuthor($data["author"]);
         }
     }
     

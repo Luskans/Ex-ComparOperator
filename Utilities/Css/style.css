@@ -1,3 +1,19 @@
+.destinationCard {
+  width: 350px;
+  height: 400px;
+  border: 1px solid grey;
+}
+.destinationCard img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.operatorCard {
+  width: 300px;
+  height: auto;
+  border: 1px solid red;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -10,16 +26,6 @@ body {
   background-size: cover;
   background-position: center;
   height: 400px;
-}
-
-.destinationCard {
-  width: 350px;
-  height: 400px;
-  border: 1px solid grey;
-}
-.destinationCard img {
-  width: 100%;
-  object-fit: cover;
 }
 
 footer {

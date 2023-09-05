@@ -35,6 +35,17 @@ class Manager {
         return $destinationsData;
     }
 
+    public function getDestinationsByLocation(string $location):array
+    {
+        $request = $this->db->prepare('SELECT * FROM destination WHERE location = :location');
+        $request->execute([
+            'location' => $location
+        ]);
+        $destinationsByLocationData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $destinationsByLocationData;
+    }
+
     public function getOperatorByDestinationId(int $id):array
     {
         $request = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
@@ -63,7 +74,7 @@ class Manager {
         $request->execute([
             'id' => $id
         ]);
-        $reviewsByOperatorIdData = $request->fetch(PDO::FETCH_ASSOC);
+        $reviewsByOperatorIdData = $request->fetchAll(PDO::FETCH_ASSOC);
 
         return $reviewsByOperatorIdData;
     }
@@ -74,25 +85,29 @@ class Manager {
         $request->execute([
             'id' => $id
         ]);
-        $scoresByOperatorIdData = $request->fetch(PDO::FETCH_ASSOC);
+        $scoresByOperatorIdData = $request->fetchAll(PDO::FETCH_ASSOC);
 
         return $scoresByOperatorIdData;
     }
 
     public function getCertificateByOperatorId($id):array
     {
-        $request = $this->db->prepare('SELECT * FROM certificate WHERE tour_operator_id = :id');
+        $request = $this->db->prepare('SELECT expires_at, signatory FROM certificate WHERE tour_operator_id = :id');
         $request->execute([
             'id' => $id
         ]);
-        $certificateByOperatorIdData = $request->fetch(PDO::FETCH_ASSOC);
+        if ($request->rowCount() > 0) {
+            $certificateByOperatorIdData = $request->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            $certificateByOperatorIdData = [];
+        }
 
         return $certificateByOperatorIdData;
     }
 
     public function getAuthorByReviewId($id):array
     {
-        $request = $this->db->prepare('SELECT * FROM author WHERE tour_operator_id = :id');
+        $request = $this->db->prepare('SELECT * FROM author WHERE id = :id');
         $request->execute([
             'id' => $id
         ]);
@@ -103,7 +118,7 @@ class Manager {
 
     public function getAuthorByScoreId($id):array
     {
-        $request = $this->db->prepare('SELECT * FROM author WHERE tour_operator_id = :id');
+        $request = $this->db->prepare('SELECT * FROM author WHERE id = :id');
         $request->execute([
             'id' => $id
         ]);

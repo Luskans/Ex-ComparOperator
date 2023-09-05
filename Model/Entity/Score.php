@@ -3,11 +3,12 @@
 class Score {
     private int $id;
     private string $value;
-    private string $author;
+    private Author $author;
 
-    public function __construct(array $data)
+    public function __construct(array $data, Author $author)
     {
         $this->hydrate($data);
+        $this->setAuthor($author);
     }
 
     ////// GETTER & SETTER /////
@@ -48,9 +49,6 @@ class Score {
         }
         if (isset($data["value"])) {
             $this->setValue($data["value"]);
-        }
-        if (isset($data["author"])) {
-            $this->setAuthor($data["author"]);
         }
     }
     

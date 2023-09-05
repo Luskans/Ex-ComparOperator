@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../Scss/main.scss"],"names":[],"mappings":"AAAA;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;AAEA;EACI;EACA;;;AAIR;EACI","file":"style.css"}
+{"version":3,"sourceRoot":"","sources":["../Scss/index.scss","../Scss/tours.scss","../Scss/main.scss"],"names":[],"mappings":"AAAA;EACI;EACA;EACA;;AAEA;EACI;EACA;;;ACPR;EACI;EACA;EACA;;;ACAJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI","file":"style.css"}

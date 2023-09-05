@@ -22,12 +22,9 @@ $destinationsData = $manager->getAllDestinations(); ?>
                 <p class="destinationCard__price">
                     <?= $destination->getPrice(); ?> €
                 </p>
-                <form action="./tours2.php" method="get">
-                    <!-- <input type="hidden" name="tour_operator_id" value="<?= $destination->getTour_operator_id() ?>">
-                    <input type="hidden" name="location" value="<?= $destination->getLocation() ?>">
-                    <input type="hidden" name="price" value="<?= $destination->getPrice() ?>"> -->
-                    <input type="hidden" name="destinationId" value="<?= $destination->getId() ?>">
-                    <!-- <input type="hidden" name="destinationName" value="<?= $destination->getLocation() ?>"> -->
+                <form action="./tours.php" method="get">
+                    <input type="hidden" name="destinationLocation" value="<?= $destination->getLocation() ?>">
+                    <!-- <input type="hidden" name="operatorId" value="<?= $destination->getTour_operator_id() ?>"> -->
                     <button type="submit">Voir les tours</button>
                 </form>
             </div>
