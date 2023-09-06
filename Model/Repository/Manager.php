@@ -46,6 +46,33 @@ class Manager {
         return $destinationsByLocationData;
     }
 
+    public function getDestinationsBySearch(string $search):array
+    {
+        $request = $this->db->prepare('SELECT * FROM destination WHERE location LIKE :search');
+        $request->execute([
+            'search' => '%'.$search.'%'
+        ]);
+        $destinationsBySearchData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $destinationsBySearchData;
+    }
+
+    public function getDestinationsByPriceUp():array
+    {
+        $request = $this->db->query('SELECT * FROM destination ORDER by price ASC');
+        $destinationsBySearchData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $destinationsBySearchData;
+    }
+
+    public function getDestinationsByPriceDown():array
+    {
+        $request = $this->db->query('SELECT * FROM destination ORDER by price DESC');
+        $destinationsBySearchData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $destinationsBySearchData;
+    }
+
     public function getOperatorByDestinationId(int $id):array
     {
         $request = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');

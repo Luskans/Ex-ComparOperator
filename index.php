@@ -8,31 +8,56 @@ session_start();
 
 
 $manager = new Manager($db);
-$destinationsData = $manager->getAllDestinations(); ?>
 
-<main class="destination mb-5">
-    <div class="container destinationCards d-flex flex-wrap gap-3">
+////// ON CHANGE L'AFFICHAGE DES DESTINATION EN FONCTION DES FILTRES DE RECHERCHE
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $search = $_GET['search'];
+    $destinationsData = $manager->getDestinationsBySearch($search);
+} elseif (isset($_GET['price']) && $_GET['price'] === 'up') {
+    $destinationsData = $manager->getDestinationsByPriceUp();
+} elseif (isset($_GET['price']) && $_GET['price'] === 'down') {
+    $destinationsData = $manager->getDestinationsByPriceDown();
+} else {
+    $destinationsData = $manager->getAllDestinations();
+}
+?>
+
+<main class="destinations">
+    <div class="container destinationCards d-flex flex-wrap justify-content-center gap-3">
+        
+        <!----- BANNER ----->
+        <div class="banner mb-3">
+            <img class="position-end" src="./Utilities/Images/destinations.jpg">
+            <div class="d-flex justify-content-center align-items-center">
+                <h2>Destinations</h2>
+            </div>
+        </div>
+        
         <?php foreach ($destinationsData as $destinationData) {
             $destination = new Destination($destinationData); ?>
-            <div class="destinationCard">
-                <div class="destinationCard__image">
-                    <img src="<?= $destination->getImage() ?>">
+            <a href="./tours.php?destinationLocation=<?= $destination->getLocation() ?>&destinationImage=<?= $destination->getImage() ?>">
+                <div class="destinationCard">
+                    <div class="destinationCard__image">
+                        <img src="<?= $destination->getImage() ?>" alt="<?= $destination->getLocation() ?>">
+                    </div>
+                    <div class="destinationCard__text d-flex justify-content-around align-items-center">
+                        <h3 class="destinationCard__location">
+                            <?= $destination->getLocation(); ?>
+                        </h3>
+                        <p class="destinationCard__price">
+                            <?= $destination->getPrice(); ?> €
+                        </p>
+                    </div>
+                    <!-- <form action="./tours.php" method="get">
+                        <input type="hidden" name="destinationLocation" value="<?= $destination->getLocation() ?>">
+                        <input type="hidden" name="destinationImage" value="<?= $destination->getImage() ?>">
+                        <button type="submit">Voir les tours</button>
+                    </form> -->
                 </div>
-                <h3 class="destinationCard__location">
-                    <?= $destination->getLocation(); ?>
-                </h3>
-                <p class="destinationCard__price">
-                    <?= $destination->getPrice(); ?> €
-                </p>
-                <form action="./tours.php" method="get">
-                    <input type="hidden" name="destinationLocation" value="<?= $destination->getLocation() ?>">
-                    <input type="hidden" name="destinationImage" value="<?= $destination->getImage() ?>">
-                    <!-- <input type="hidden" name="operatorId" value="<?= $destination->getTour_operator_id() ?>"> -->
-                    <button type="submit">Voir les tours</button>
-                </form>
-            </div>
+            </a> 
         <?php } ?>
     </div>
 </main>
 
+<script src="./Utilities/Js/index.js"></script>
 <?php include('./Template/template_footer.php'); ?>

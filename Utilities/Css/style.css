@@ -1,11 +1,49 @@
 .destinationCard {
   width: 350px;
-  height: 400px;
-  border: 1px solid grey;
+  position: relative;
 }
 .destinationCard img {
   width: 100%;
+  height: 250px;
   object-fit: cover;
+}
+.destinationCard__text {
+  width: 65%;
+  position: absolute;
+  top: 60%;
+  left: 0;
+  background-color: rgba(34, 34, 34, 0.8);
+  color: white;
+  padding: 5px 20px 5px 20px;
+  border-radius: 0 10px 10px 0;
+}
+.destinationCard__text .destinationCard__price {
+  font-size: 1.4em;
+  font-style: italic;
+  height: 21px;
+}
+
+.banner {
+  width: 100%;
+  height: 150px;
+  position: relative;
+}
+.banner img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+}
+.banner div {
+  position: absolute;
+  left: 30%;
+  top: 0%;
+  height: 100%;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.banner h2 {
+  color: white;
+  font-size: 4em;
 }
 
 .operatorCard {
@@ -15,37 +53,21 @@
   border-radius: 20px;
   padding: 10px;
 }
-.operatorCard__banner {
-  width: 100%;
-  height: 150px;
-  position: relative;
-}
-.operatorCard__banner img {
-  width: 100%;
-  max-height: 150px;
-  object-fit: cover;
-}
-.operatorCard__banner div {
-  position: absolute;
-  left: 30%;
-  top: 0%;
-  height: 100%;
-  width: 40%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-.operatorCard__banner h2 {
-  color: white;
-  font-size: 4em;
-}
 .operatorCard__title {
   color: white;
-  background-color: rgb(85, 85, 85);
+  background-color: #3c3c3c;
+  padding-bottom: 4px;
 }
 .operatorCard__title .score {
   font-size: 1.5em;
+  margin-bottom: 0px;
+  margin-top: -4px;
+}
+.operatorCard__title svg {
+  margin-top: -5px;
 }
 .operatorCard__link {
-  background-color: #f9efb7;
+  background-color: #feecbc;
   display: flex;
   margin-bottom: 10px;
   padding: 2px;
@@ -64,6 +86,7 @@
 }
 .operatorCard__stages {
   font-style: italic;
+  margin-top: 10px;
 }
 .operatorCard__stages li {
   margin-bottom: 10px;
@@ -72,7 +95,7 @@
   padding: 10px;
   font-weight: bold;
   color: white;
-  background-color: rgb(85, 85, 85);
+  background-color: #3c3c3c;
 }
 .operatorCard__form {
   width: 100%;
@@ -90,13 +113,21 @@
 .operatorCard__buttons .dropdown {
   width: 100%;
 }
+.operatorCard__buttons .dropdown-menu {
+  width: 380px;
+  height: 368px;
+}
 .operatorCard__buttons button {
   width: 100%;
   height: 40px;
-  background-color: rgb(85, 85, 85);
+  background-color: #3c3c3c;
+}
+.operatorCard__commentaries {
+  overflow: auto;
 }
 .operatorCard__commentaries p:nth-child(3n+1) {
   font-weight: bold;
+  margin-bottom: 2px;
 }
 .operatorCard__commentaries p:nth-child(3n+2) {
   font-style: italic;
@@ -126,14 +157,27 @@ body {
 }
 
 .header {
-  background-image: url("../Images/header.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 400px;
+  background-color: #222222;
+  padding: 10px 0 10px 0;
+}
+.header__logo {
+  min-width: 100px;
+  height: 100px;
+}
+.header__logo img {
+  width: 100%;
+  height: 100%;
+}
+.header .search button:hover {
+  background-color: #fbbc0c;
+  border-color: #fbbc0c;
 }
 
 footer {
-  background-color: rgb(234, 234, 234);
+  background-color: #222222;
+  color: white;
+  padding-top: 10px;
+  margin-top: 30px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -12,6 +12,16 @@
 </head>
 <body>
 
+    <!-- <header class="header mb-5">
+        <div class="header__logo"><img src=""></div>
+        <div class="container">
+            <form action="./tours.php" method="get" class="d-flex" role="search">
+                <input name="search"  class="search__bar form-control me-2" placeholder="Rechercher...">
+                <button class="btn btn-outline-light" type="submit">Go</button>
+            </form>
+        </div>
+    </header> -->
+
     <header class="header">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="header__logo">

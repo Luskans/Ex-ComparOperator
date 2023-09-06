@@ -1,4 +1,4 @@
-<?php include('./Template/template_header.php'); ?>
+<?php include('./Template/template_header2.php'); ?>
 
 <?php
 require_once('./Utilities/Config/db.php');
@@ -23,7 +23,7 @@ $manager = new Manager($db);
 
     ////// DISPLAY DE LA BANNIERE
     if (isset($_GET['destinationImage'])) { ?>
-        <div class="operatorCard__banner mb-3">
+        <div class="banner mb-3">
             <img src="<?= $_GET['destinationImage'] ?>">
             <div class="d-flex justify-content-center align-items-center">
                 <h2><?= $_GET['destinationLocation'] ?></h2>
@@ -166,4 +166,5 @@ foreach ($operatorsData as $operatorData) {
     </div>
 </main>
 
+<script src="./Utilities/Js/tours.js"></script>
 <?php include('./Template/template_footer.php'); ?>

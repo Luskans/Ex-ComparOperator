@@ -1,3 +1,7 @@
+$dark-color: rgb(85, 85, 85);
+$gold-color: #fbbc0c;
+
+
 @import 'index.scss';
 @import 'tours.scss';
 
@@ -9,12 +13,34 @@ body {
 }
 
 .header {
-    background-image: url('../Images/header.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 400px;
+    // background-image: url('../Images/header.jpg');
+    // background-size: cover;
+    // background-position: center;
+    // height: 400px;
+    background-color: darken($dark-color, 20);
+    padding: 10px 0 10px 0;
+
+    &__logo {
+        min-width: 100px;
+        height: 100px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .search {
+        button:hover {
+            background-color: $gold-color;
+            border-color: $gold-color;
+        }
+    }
 }
 
 footer {
-    background-color: rgb(234, 234, 234);
+    background-color: darken($dark-color, 20);
+    color: white;
+    padding-top: 10px;
+    margin-top: 30px;
 }

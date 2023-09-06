@@ -1,7 +1,8 @@
     <footer class="d-flex justify-content-center">
-        <p>Blablbla copyright</p>
+        <p>Olga, Sylvain &copy; Copyright - 2023</p>
     </footer>
-    
-<script src="./Utilities/Js/tours.js"></script>
+
+
+
 </body>
 </html>
