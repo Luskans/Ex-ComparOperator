@@ -126,4 +126,49 @@ class Manager {
 
         return $authorByScoreIdData;
     }
+
+    public function createReview($name, $message, $tour_operator_id)
+    {
+        $request = $this->db->prepare('INSERT INTO author (name) VALUES (:name)');
+        $request->execute([
+            'name' => $name,
+        ]);
+
+        $author_id = $this->db->lastInsertId();
+
+        $request = $this->db->prepare('INSERT INTO review (message, tour_operator_id, author_id) VALUES (:message, :tour_operator_id, :author_id)');
+        $request->execute([
+            'message' => $message,
+            'tour_operator_id' => $tour_operator_id,
+            'author_id' => $author_id
+        ]);
+    }
+
+    public function createScore($name, $value, $tour_operator_id)
+    {
+        $request = $this->db->prepare('INSERT INTO author (name) VALUES (:name)');
+        $request->execute([
+            'name' => $name,
+        ]);
+
+        $author_id = $this->db->lastInsertId();
+
+        $request = $this->db->prepare('INSERT INTO score (value, tour_operator_id, author_id) VALUES (:value, :tour_operator_id, :author_id)');
+        $request->execute([
+            'value' => $value,
+            'tour_operator_id' => $tour_operator_id,
+            'author_id' => $author_id
+        ]);
+    }
+
+    public function checkAuthor($name)
+    {
+        $request = $this->db->prepare('SELECT COUNT(*) FROM author WHERE name = :name');
+        $request->execute([
+            'name' => $name
+        ]);
+        $count = $request->fetchColumn();
+
+        return $count;
+    }
 }

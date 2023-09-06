@@ -1,5 +1,143 @@
+$dark-color: rgb(85, 85, 85);
+$gold-color: #f9efb7;
+
 .operatorCard {
-    width: 300px;
+    width: 400px;
     height: auto;
-    border: 1px solid red;
+    box-shadow: 6px 6px 12px $dark-color;
+    border-radius: 20px;
+    padding: 10px;
+
+    &__banner {
+        width: 100%;
+        height: 150px;
+        position: relative;
+        // border: 1px solid $dark-color;
+
+        img {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+        }
+
+        div {
+            position: absolute;
+            // left: calc(50% - 25px);
+            left: 30%;
+            top: 0%;
+            height: 100%;
+            width: 40%;
+            background-color: rgba(0, 0, 0, 0.5);
+            // background-color: blue;
+        }
+
+        h2 {
+            color: white;
+            font-size: 4em;
+        }
+    }
+
+    &__title {
+        color: white;
+        background-color: $dark-color;
+        // margin-bottom: 10px;
+        
+        .score {
+            font-size: 1.5em;
+        }
+    }
+
+    &__link {
+        background-color: $gold-color;
+        display: flex;
+        margin-bottom: 10px;
+        padding: 2px;
+
+        p {
+            margin: auto;
+        }
+
+        a {
+            margin: auto;
+            color: rgb(45, 45, 45);
+            text-decoration: none;
+            transition: text-decoration 2s;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__stages {
+        font-style: italic;
+
+        li {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__total {
+        padding: 10px;
+        font-weight: bold;
+        color: white;
+        background-color: $dark-color;
+    }
+
+    &__form {
+        width: 100%;
+        margin-bottom: 15px;
+
+        textarea, input {
+            width: 100%;
+        }
+
+        .commentary__error {
+            background-color: rgb(255, 215, 215);
+        }
+    }
+
+    &__buttons {
+        width: 100%;
+
+        .dropdown {
+            width: 100%;
+        }
+
+        button {
+            width: 100%;
+            height: 40px;
+            background-color: $dark-color;
+        }
+    }
+
+    &__commentaries {
+        p:nth-child(3n+1) {
+            font-weight: bold;
+        }
+
+        p:nth-child(3n+2) {
+            font-style: italic;
+        }
+    }
+
+    &__grade {
+        position: relative;
+        width: 100%;
+
+        button {
+            line-height: 3.5;
+            p {
+                height: 40px;
+            }
+        }
+    }
+
+    .number {
+        position: absolute;
+        top: 5px;
+        left: 100px;
+        width: 50px;
+    }
 }
+

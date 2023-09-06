@@ -9,9 +9,113 @@
 }
 
 .operatorCard {
-  width: 300px;
+  width: 400px;
   height: auto;
-  border: 1px solid red;
+  box-shadow: 6px 6px 12px rgb(85, 85, 85);
+  border-radius: 20px;
+  padding: 10px;
+}
+.operatorCard__banner {
+  width: 100%;
+  height: 150px;
+  position: relative;
+}
+.operatorCard__banner img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+}
+.operatorCard__banner div {
+  position: absolute;
+  left: 30%;
+  top: 0%;
+  height: 100%;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.operatorCard__banner h2 {
+  color: white;
+  font-size: 4em;
+}
+.operatorCard__title {
+  color: white;
+  background-color: rgb(85, 85, 85);
+}
+.operatorCard__title .score {
+  font-size: 1.5em;
+}
+.operatorCard__link {
+  background-color: #f9efb7;
+  display: flex;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+.operatorCard__link p {
+  margin: auto;
+}
+.operatorCard__link a {
+  margin: auto;
+  color: rgb(45, 45, 45);
+  text-decoration: none;
+  transition: text-decoration 2s;
+}
+.operatorCard__link a:hover {
+  text-decoration: underline;
+}
+.operatorCard__stages {
+  font-style: italic;
+}
+.operatorCard__stages li {
+  margin-bottom: 10px;
+}
+.operatorCard__total {
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(85, 85, 85);
+}
+.operatorCard__form {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.operatorCard__form textarea, .operatorCard__form input {
+  width: 100%;
+}
+.operatorCard__form .commentary__error {
+  background-color: rgb(255, 215, 215);
+}
+.operatorCard__buttons {
+  width: 100%;
+}
+.operatorCard__buttons .dropdown {
+  width: 100%;
+}
+.operatorCard__buttons button {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(85, 85, 85);
+}
+.operatorCard__commentaries p:nth-child(3n+1) {
+  font-weight: bold;
+}
+.operatorCard__commentaries p:nth-child(3n+2) {
+  font-style: italic;
+}
+.operatorCard__grade {
+  position: relative;
+  width: 100%;
+}
+.operatorCard__grade button {
+  line-height: 3.5;
+}
+.operatorCard__grade button p {
+  height: 40px;
+}
+.operatorCard .number {
+  position: absolute;
+  top: 5px;
+  left: 100px;
+  width: 50px;
 }
 
 body {

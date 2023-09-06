@@ -4,6 +4,7 @@
 require_once('./Utilities/Config/db.php');
 require_once('./Model/Repository/Manager.php');
 require_once('./Model/Entity/Destination.php');
+session_start();
 
 
 $manager = new Manager($db);
@@ -25,6 +26,7 @@ $destinationsData = $manager->getAllDestinations(); ?>
                 </p>
                 <form action="./tours.php" method="get">
                     <input type="hidden" name="destinationLocation" value="<?= $destination->getLocation() ?>">
+                    <input type="hidden" name="destinationImage" value="<?= $destination->getImage() ?>">
                     <!-- <input type="hidden" name="operatorId" value="<?= $destination->getTour_operator_id() ?>"> -->
                     <button type="submit">Voir les tours</button>
                 </form>
