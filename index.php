@@ -5,6 +5,7 @@ require_once('./Utilities/Config/db.php');
 require_once('./Model/Repository/Manager.php');
 require_once('./Model/Entity/Destination.php');
 
+
 $manager = new Manager($db);
 $destinationsData = $manager->getAllDestinations(); ?>
 
