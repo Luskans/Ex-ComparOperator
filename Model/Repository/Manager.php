@@ -75,13 +75,109 @@ class Manager {
 
     public function getOperatorByDestinationId(int $id):array
     {
-        $request = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id');
+        $request = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id ORDER BY isPremium DESC');
         $request->execute([
             'id' => $id
         ]);
         $operatorsByDestinationIdData = $request->fetchAll(PDO::FETCH_ASSOC);
 
         return $operatorsByDestinationIdData;
+    }
+
+    public function getOpByDestIdByScoreUp(int $id):array
+    {
+        $request = $this->db->prepare('SELECT tour_operator.* 
+        FROM tour_operator 
+        LEFT JOIN score ON tour_operator.id = score.tour_operator_id 
+        WHERE tour_operator.id = :id 
+        ORDER BY score.value ASC');
+        $request->execute([
+            'id' => $id
+        ]);
+        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $opByDestIdByScoreUpData;
+    }
+
+    public function getOpByDestIdByScoreDown(int $id):array
+    {
+        $request = $this->db->prepare('SELECT tour_operator.* 
+        FROM tour_operator 
+        LEFT JOIN score ON tour_operator.id = score.tour_operator_id 
+        WHERE tour_operator.id = :id 
+        ORDER BY score.value DESC');
+        $request->execute([
+            'id' => $id
+        ]);
+        $opByDestIdByScoreDownData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $opByDestIdByScoreDownData;
+    }
+
+    public function getOpByDestIdByPriceUp(int $id):array
+    {
+        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
+        $request->execute([
+            'id' => $id
+        ]);
+        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $opByDestIdByScoreUpData;
+    }
+
+    public function getOpByDestIdByPriceDown(int $id):array
+    {
+        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
+        $request->execute([
+            'id' => $id
+        ]);
+        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $opByDestIdByScoreUpData;
+    }
+
+    public function getOpByDestIdByReviewUp(int $id):array
+    {
+        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
+        $request->execute([
+            'id' => $id
+        ]);
+        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $opByDestIdByScoreUpData;
+    }
+
+    public function getOpByDestIdByReviewDown(int $id):array
+    {
+        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
+        $request->execute([
+            'id' => $id
+        ]);
+        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $opByDestIdByScoreUpData;
+    }
+
+    public function getOpByDestIdBySearch(int $id, string $search):array
+    {
+        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value DESC');
+        $request->execute([
+            'id' => $id
+        ]);
+        $getOpByDestIdBySearchData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $getOpByDestIdBySearchData;
+    }
+
+    public function getThreeRandomPremiumOperators():array
+    {
+        $request = $this->db->prepare('SELECT * FROM tour_operator WHERE isPremium = :isPremium ORDER BY RAND()');
+        $request->execute([
+            'isPremium' => 1
+        ]);
+        $threeRandomPremiumOperatorData = $request->fetchAll(PDO::FETCH_ASSOC);
+
+        return $threeRandomPremiumOperatorData;
     }
 
     public function getDestinationsByOperatorId($id):array

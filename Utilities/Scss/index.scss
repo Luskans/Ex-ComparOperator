@@ -1,28 +1,47 @@
-.destinationCard {
-    width: 350px;
-    position: relative;
+.banner {
+    width: 100%;
+}
 
-    img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        // border-radius: 5px;
-    }
+.shaper{
+    width: 100%;
+    padding-top: 15px;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
 
-    &__text {
-        width: 65%;
-        position: absolute;
-        top: 60%;
-        left: 0;
-        background-color: rgba(darken($dark-color, 20), 0.8);
-        color: white;
-        padding: 5px 20px 5px 20px;
-        border-radius: 0 10px 10px 0;
-
-        .destinationCard__price {
-            font-size: 1.4em;
-            font-style: italic;
-            height: 21px;
+.destinations {
+    background-color: $blue-color;
+    background-color: $gold-color;
+    background-color: lighten($dark-color, 60);
+    
+    .destinationCard {
+        width: 350px;
+        position: relative;
+    
+        img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            // border-radius: 5px;
+        }
+    
+        &__text {
+            width: 65%;
+            position: absolute;
+            top: 60%;
+            left: 0;
+            background-color: rgba(darken($dark-color, 20), 0.8);
+            color: white;
+            padding: 5px 20px 5px 20px;
+            border-radius: 0 10px 10px 0;
+    
+            .destinationCard__price {
+                font-size: 1.4em;
+                font-style: italic;
+                height: 21px;
+            }
         }
     }
 }

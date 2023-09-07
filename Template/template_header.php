@@ -13,34 +13,12 @@
 <body>
 
     <header class="header">
-        <div class="container d-flex justify-content-between align-items-center">
+        <div class="container d-flex">
+            <h1 class="header__text">" Find the cheapest tours for all destinations in the world ! "</h1>
             <div class="header__logo">
-                <img src="./Utilities/Images/logo.png">
-            </div>
-            <div class="container-fluid d-flex align-items-center justify-content-end gap-2">
-                <!------- On change l'aspect du bouton price en fonction de l'odre choisi ------->
-                
-            <?php if (isset($_GET['price']) && $_GET['price'] === 'down') { ?>
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Prix</button>
-            <?php } elseif (isset($_GET['price']) && $_GET['price'] === 'up') { ?>
-                <div class="dropup">
-                    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Prix</button>
-            <?php } else { ?>
-                <div class="dropdown">
-                    <button class="btn btn-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">Prix</button>
-                <?php } ?>
-        
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="./index.php?price=up">Croissant</a></li>
-                        <li><a class="dropdown-item" href="./index.php?price=down">Décroissant</a></li>
-                    </ul>
-                </div>
-                
-                <form action="./index.php" method="get" class="search d-flex" role="search">
-                    <input name="search"  class="search__bar form-control me-2" placeholder="Rechercher...">
-                    <button class="btn btn-outline-light" type="submit">Go</button>
-                </form>
+                <a href="./index.php">
+                    <img src="./Utilities/Images/logo.png">
+                </a>
             </div>
         </div>
     </header>

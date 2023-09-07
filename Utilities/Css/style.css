@@ -1,13 +1,32 @@
-.destinationCard {
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+.banner {
+  width: 100%;
+}
+
+.shaper {
+  width: 100%;
+  padding-top: 15px;
+  min-height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.destinations {
+  background-color: #0072bc;
+  background-color: #fbbc0c;
+  background-color: #eeeeee;
+}
+.destinations .destinationCard {
   width: 350px;
   position: relative;
 }
-.destinationCard img {
+.destinations .destinationCard img {
   width: 100%;
   height: 250px;
   object-fit: cover;
 }
-.destinationCard__text {
+.destinations .destinationCard__text {
   width: 65%;
   position: absolute;
   top: 60%;
@@ -17,7 +36,7 @@
   padding: 5px 20px 5px 20px;
   border-radius: 0 10px 10px 0;
 }
-.destinationCard__text .destinationCard__price {
+.destinations .destinationCard__text .destinationCard__price {
   font-size: 1.4em;
   font-style: italic;
   height: 21px;
@@ -39,6 +58,7 @@
   top: 0%;
   height: 100%;
   width: 40%;
+  min-width: 500px;
   background-color: rgba(0, 0, 0, 0.6);
 }
 .banner h2 {
@@ -49,6 +69,7 @@
 .operatorCard {
   width: 400px;
   height: auto;
+  max-height: 500px;
   box-shadow: 6px 6px 12px rgb(85, 85, 85);
   border-radius: 20px;
   padding: 10px;
@@ -84,9 +105,15 @@
 .operatorCard__link a:hover {
   text-decoration: underline;
 }
+.operatorCard__link--empty {
+  background-color: white;
+  height: 28px;
+}
 .operatorCard__stages {
   font-style: italic;
-  margin-top: 10px;
+  margin-top: 15px;
+  overflow-y: scroll;
+  height: 130px;
 }
 .operatorCard__stages li {
   margin-bottom: 10px;
@@ -110,20 +137,18 @@
 .operatorCard__buttons {
   width: 100%;
 }
-.operatorCard__buttons .dropdown {
+.operatorCard__buttons .dropdown, .operatorCard__buttons .dropup {
   width: 100%;
 }
 .operatorCard__buttons .dropdown-menu {
   width: 380px;
-  height: 368px;
+  max-height: 320px;
+  overflow: auto;
 }
 .operatorCard__buttons button {
   width: 100%;
   height: 40px;
   background-color: #3c3c3c;
-}
-.operatorCard__commentaries {
-  overflow: auto;
 }
 .operatorCard__commentaries p:nth-child(3n+1) {
   font-weight: bold;
@@ -157,27 +182,52 @@ body {
 }
 
 .header {
-  background-color: #222222;
-  padding: 10px 0 10px 0;
+  background-image: url("../Images/header.png");
+  background-size: cover;
+  background-position: 0 -20px;
+  height: 340px;
 }
 .header__logo {
-  min-width: 100px;
-  height: 100px;
+  min-width: 300px;
+  height: 300px;
+  width: 300px;
 }
 .header__logo img {
+  margin-top: 20px;
   width: 100%;
   height: 100%;
 }
-.header .search button:hover {
-  background-color: #fbbc0c;
-  border-color: #fbbc0c;
+.header__text {
+  font-family: "Amatic SC", cursive;
+  color: white;
+  font-weight: bold;
+  width: calc(50% - 150px);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.header__empty {
+  width: calc(50% - 150px);
+}
+
+.filters .container {
+  background-color: #222222;
+  border-radius: 0 0 40px 40px;
+}
+.filters button:hover {
+  background-color: #0072bc;
+  border-color: #0072bc;
 }
 
 footer {
   background-color: #222222;
   color: white;
   padding-top: 10px;
-  margin-top: 30px;
+}
+footer span:nth-child(1) {
+  color: #fbbc0c;
+}
+footer span:nth-child(2) {
+  color: #0072bc;
 }
 
 /*# sourceMappingURL=style.css.map */
