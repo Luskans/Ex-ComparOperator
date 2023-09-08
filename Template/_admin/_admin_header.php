@@ -9,13 +9,5 @@
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous" defer></script>
+    <script src="../../Utilities/Js/addDestinationAdmin.js" defer></script>
 </head>
-<body>
-
-    <header class="header mb-5">
-        <div class="header__logo"><img src=""></div>
-        <div class="container">
-            <div class="header__search">
-            </div>
-        </div>
-    </header>

@@ -32,5 +32,4 @@ $destinationsData = $manager->getAllDestinations(); ?>
         <?php } ?>
     </div>
 </main>
-
 <?php include('./Template/template_footer.php'); ?>
