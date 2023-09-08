@@ -32,28 +32,34 @@
     width: 400px;
     height: auto;
     max-height: 500px;
-    box-shadow: 6px 6px 12px $dark-color;
+    // box-shadow: 6px 6px 12px $dark-color;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     padding: 10px;
 
     &__title {
         color: white;
         background-color: darken($dark-color, 10);
-        padding-bottom: 4px;
         
         .score {
             font-size: 1.5em;
             margin-bottom: 0px;
-            margin-top: -4px;
+            margin-top: -8px;
         }
 
         svg {
-            margin-top: -5px;
+            margin-top: -4px;
+            fill: lighten($blue-color, 35);
+        }
+
+        h3 {
+            margin-top: 3px;
         }
     }
 
     &__link {
-        background-color: lighten($gold-color, 35);
+        // background-color: lighten($gold-color, 35);
+        background-color: lighten($blue-color, 35);
         display: flex;
         margin-bottom: 10px;
         padding: 2px;
@@ -82,8 +88,9 @@
     &__stages {
         font-style: italic;
         margin-top: 15px;
-        overflow-y: scroll;
+        overflow: auto;
         height: 130px;
+        scrollbar-width: thin;
 
         li {
             margin-bottom: 10px;
@@ -122,16 +129,31 @@
             // height: 368px;
             max-height: 320px;
             overflow: auto;
+            scrollbar-width: thin;
         }
 
-        button {
+        .btn__Rev__Sco {
             width: 100%;
             height: 40px;
             background-color: darken($dark-color, 10);
+
+            button {
+                // width: 100%;
+                // height: 40px;
+                // background-color: darken($dark-color, 10);
+                background: transparent;
+                border: none;
+            }
+
+            p {
+                margin-right: 15px;
+            }
         }
+        
     }
 
     &__commentaries {
+        
         p:nth-child(3n+1) {
             font-weight: bold;
             margin-bottom: 2px;

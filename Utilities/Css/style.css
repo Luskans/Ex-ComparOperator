@@ -1,4 +1,7 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 .banner {
   width: 100%;
 }
@@ -13,17 +16,16 @@
 }
 
 .destinations {
-  background-color: #0072bc;
-  background-color: #fbbc0c;
-  background-color: #eeeeee;
+  background-color: #bce5ff;
 }
 .destinations .destinationCard {
-  width: 350px;
+  width: 300px;
   position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 .destinations .destinationCard img {
   width: 100%;
-  height: 250px;
+  height: 200px;
   object-fit: cover;
 }
 .destinations .destinationCard__text {
@@ -33,13 +35,16 @@
   left: 0;
   background-color: rgba(34, 34, 34, 0.8);
   color: white;
-  padding: 5px 20px 5px 20px;
+  padding: 5px 10px 0px 10px;
   border-radius: 0 10px 10px 0;
 }
 .destinations .destinationCard__text .destinationCard__price {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-style: italic;
   height: 21px;
+}
+.destinations .destinationCard__text .destinationCard__location {
+  font-size: 1.4em;
 }
 
 .banner {
@@ -70,25 +75,28 @@
   width: 400px;
   height: auto;
   max-height: 500px;
-  box-shadow: 6px 6px 12px rgb(85, 85, 85);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   padding: 10px;
 }
 .operatorCard__title {
   color: white;
   background-color: #3c3c3c;
-  padding-bottom: 4px;
 }
 .operatorCard__title .score {
   font-size: 1.5em;
   margin-bottom: 0px;
-  margin-top: -4px;
+  margin-top: -8px;
 }
 .operatorCard__title svg {
-  margin-top: -5px;
+  margin-top: -4px;
+  fill: #70c7ff;
+}
+.operatorCard__title h3 {
+  margin-top: 3px;
 }
 .operatorCard__link {
-  background-color: #feecbc;
+  background-color: #70c7ff;
   display: flex;
   margin-bottom: 10px;
   padding: 2px;
@@ -112,8 +120,9 @@
 .operatorCard__stages {
   font-style: italic;
   margin-top: 15px;
-  overflow-y: scroll;
+  overflow: auto;
   height: 130px;
+  scrollbar-width: thin;
 }
 .operatorCard__stages li {
   margin-bottom: 10px;
@@ -144,11 +153,19 @@
   width: 380px;
   max-height: 320px;
   overflow: auto;
+  scrollbar-width: thin;
 }
-.operatorCard__buttons button {
+.operatorCard__buttons .btn__Rev__Sco {
   width: 100%;
   height: 40px;
   background-color: #3c3c3c;
+}
+.operatorCard__buttons .btn__Rev__Sco button {
+  background: transparent;
+  border: none;
+}
+.operatorCard__buttons .btn__Rev__Sco p {
+  margin-right: 15px;
 }
 .operatorCard__commentaries p:nth-child(3n+1) {
   font-weight: bold;
@@ -174,6 +191,145 @@
   width: 50px;
 }
 
+/* Définition des variables personnalisées pour les images embarquées */
+[class*=five-rate-],
+.rating-scale,
+figure[class*=notation] {
+  --rating-star-full: url('data:image/svg+xml,   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">      <path d="m16.04,0l4.89,10.5,11.07,1.7-7.98,8.24,1.88,11.56-9.86-5.49-9.93,5.49,1.88-11.56L0,12.19l11.07-1.7L16.04,0Z"/>   </svg>');
+  --rating-star-half: url('data:image/svg+xml,   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">   <path d="m16,.08v26.45l-9.89,5.47,1.88-11.56L0,12.19l11.07-1.7L16,.08Z"/>   </svg>');
+  --rating-star-empty: url('data:image/svg+xml,   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">   <path d="m25.91,32l-9.87-5.49-9.94,5.49,1.88-11.56L0,12.2l11.06-1.69L16.04,0l4.9,10.51,11.06,1.69-7.98,8.23,1.88,11.56ZM2.04,12.89l6.97,7.2-1.64,10.06,8.66-4.78,8.59,4.78-1.64-10.06,6.97-7.19-9.67-1.48-4.26-9.14-4.32,9.13-9.67,1.48Z"/>   </svg>');
+}
+
+[class*=five-rate-] {
+  display: inline-flex;
+  flex: none;
+  flex-flow: row;
+  text-align: center;
+  margin: auto;
+  white-space: nowrap;
+}
+
+[class*=rate-value] {
+  width: 20px;
+  height: 20px;
+  font-size: var(--font-size, 1rem);
+  position: relative;
+  margin: 0 !important;
+}
+
+[class*=rate-value]:before,
+[class*=rate-value]:after {
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  position: absolute;
+  content: " ";
+  margin-top: 2px;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+}
+
+[class*=rate-value]:before {
+  background-color: var(--primary-color, grey);
+  -webkit-mask-image: var(--rating-star-empty);
+  mask-image: var(--rating-star-empty);
+}
+
+[class*=five-rate-].larger [class*=rate-value] {
+  width: var(--size-large);
+  height: var(--size-large);
+}
+
+[class*=five-rate-].smaller [class*=rate-value] {
+  width: var(--size-small);
+  height: var(--size-small);
+}
+
+[class*=five-rate-] button [aria-hidden=true] {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0 !important;
+  height: 0 !important;
+  text-indent: -6.25rem;
+  line-height: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 0;
+}
+
+.rate-value-half:before {
+  -webkit-mask-image: var(--rating-star-half);
+  mask-image: var(--rating-star-half);
+  background-color: var(--yellow, orange);
+}
+
+/* ajout d'une bordure de contraste en mode light pour les demies étoiles */
+.rate-value-half:after {
+  -webkit-mask-image: var(--rating-star-empty);
+  mask-image: var(--rating-star-empty);
+  background-color: var(--primary-color, black);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* bordure de contraste en arrière en mode dark */
+  .rate-value-half:before {
+    z-index: 1;
+  }
+  .rate-value-half:after {
+    z-index: 0;
+  }
+}
+.rate-value-full:before {
+  -webkit-mask-image: var(--rating-star-full);
+  mask-image: var(--rating-star-full);
+  background-color: var(--yellow, orange);
+}
+
+.five-rate-active:focus-within button:before {
+  -webkit-mask-image: var(--rating-star-full);
+  mask-image: var(--rating-star-full);
+  background-color: var(--link-color, rgb(93, 63, 224));
+}
+
+/*
+  Gestion des changements visuels à la navigation clavier = :hover
+   */
+.five-rate-active button:focus ~ [class*=rate-value]:before {
+  -webkit-mask-image: var(--rating-star-empty);
+  mask-image: var(--rating-star-empty);
+  background-color: var(--primary-color, black);
+}
+
+@media (prefers-color-scheme: light) {
+  /* ajout d'une bordure de contraste en mode light */
+  .rate-value-full:after,
+  .five-rate-active:focus-within button:after {
+    -webkit-mask-image: var(--rating-star-empty);
+    mask-image: var(--rating-star-empty);
+    background-color: var(--primary-color, black);
+  }
+  .five-rate-active:focus-within button:after {
+    background-color: transparent;
+  }
+}
+@media (any-pointer: fine) {
+  .five-rate-active:hover button:before {
+    -webkit-mask-image: var(--rating-star-full);
+    mask-image: var(--rating-star-full);
+    background-color: var(--link-color, #fbbc0c);
+  }
+  .five-rate-active:hover button:after {
+    background-color: transparent;
+  }
+  .five-rate-active button:hover ~ [class*=rate-value]:before {
+    -webkit-mask-image: var(--rating-star-empty);
+    mask-image: var(--rating-star-empty);
+    background-color: var(--primary-color, grey);
+  }
+}
 body {
   margin: 0;
   padding: 0;
@@ -181,36 +337,37 @@ body {
   height: auto;
 }
 
+h1, h2, h3, h4 {
+  font-family: "Courgette", cursive;
+}
+
 .header {
   background-image: url("../Images/header.png");
   background-size: cover;
-  background-position: 0 -20px;
-  height: 340px;
 }
 .header__logo {
-  min-width: 300px;
-  height: 300px;
   width: 300px;
 }
 .header__logo img {
-  margin-top: 20px;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
 }
 .header__text {
   font-family: "Amatic SC", cursive;
   color: white;
   font-weight: bold;
   width: calc(50% - 150px);
+  min-width: 200px;
   margin-top: auto;
   margin-bottom: auto;
 }
 .header__empty {
   width: calc(50% - 150px);
+  min-width: 200px;
 }
 
 .filters .container {
-  background-color: #222222;
+  background-color: #3c3c3c;
   border-radius: 0 0 40px 40px;
 }
 .filters button:hover {
@@ -219,7 +376,7 @@ body {
 }
 
 footer {
-  background-color: #222222;
+  background-color: #3c3c3c;
   color: white;
   padding-top: 10px;
 }
@@ -228,6 +385,26 @@ footer span:nth-child(1) {
 }
 footer span:nth-child(2) {
   color: #0072bc;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+  width: 5px;
+  background: yellow;
+}
+
+@media screen and (max-width: 700px) {
+  .header__logo {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

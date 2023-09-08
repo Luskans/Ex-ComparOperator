@@ -13,7 +13,7 @@
 <body>
 
     <header class="header">
-        <div class="container d-flex">
+        <div class="container-md d-flex py-3 gap-2">
             <h1 class="header__text">" Find the cheapest tours for all destinations in the world ! "</h1>
             <div class="header__logo">
                 <a href="./index.php">

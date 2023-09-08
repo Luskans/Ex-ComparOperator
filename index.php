@@ -32,14 +32,14 @@ $operatorsData = $manager->getThreeRandomPremiumOperators();
 <main class="">
 
     <!--------- BANNER --------->
-    <section class="container p-0">
+    <!-- <section class="container p-0">
         <div class="banner">
             <img src="./Utilities/Images/destinations.jpg">
             <div class="d-flex justify-content-center align-items-center">
                 <h2>Destinations</h2>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!--------- FILTERS --------->
     <aside class="filters mb-5">
@@ -94,7 +94,16 @@ $operatorsData = $manager->getThreeRandomPremiumOperators();
                 </div>
             </div> -->
             
-            <?php foreach ($destinationsData as $destinationData) {
+            <?php
+            $totalDestinations = 0; // Used to calculate display frequency of pubs
+            $pubsFrequency = rand(4, 6); // Display a pub every 4 to 6 destinations
+            foreach ($destinationsData as $destinationData) {
+                if ($totalDestinations != 0 && $totalDestinations % $pubsFrequency === 0) { ?>
+                    <div class="destinationCard d-flex justify-content-center align-items-center">
+                        <p>PUB</p>
+                    </div>
+                <?php } else {
+
                 $destination = new Destination($destinationData); ?>
                 <a href="./tours.php?destinationLocation=<?= $destination->getLocation() ?>&destinationImage=<?= $destination->getImage() ?>">
                     <div class="destinationCard">
@@ -115,7 +124,9 @@ $operatorsData = $manager->getThreeRandomPremiumOperators();
                             <button type="submit">Voir les tours</button>
                         </form> -->
                     </div>
-                </a> 
+                </a>
+                <?php } ?>
+                <?php $totalDestinations++;?>
             <?php } ?>
         </div>
     </section>

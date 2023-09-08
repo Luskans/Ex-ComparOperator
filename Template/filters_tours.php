@@ -1,4 +1,4 @@
-<div class="container d-flex align-items-center justify-content-center p-2 gap-2">
+<div class="container d-flex flex-wrap align-items-center justify-content-center p-2 gap-2">
 
     <!------- On change l'aspect du bouton score en fonction de l'ordre choisi ------->  
     <?php if (isset($_GET['score']) && $_GET['score'] === 'down') { ?>

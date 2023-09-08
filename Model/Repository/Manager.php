@@ -84,85 +84,86 @@ class Manager {
         return $operatorsByDestinationIdData;
     }
 
-    public function getOpByDestIdByScoreUp(int $id):array
-    {
-        $request = $this->db->prepare('SELECT tour_operator.* 
-        FROM tour_operator 
-        LEFT JOIN score ON tour_operator.id = score.tour_operator_id 
-        WHERE tour_operator.id = :id 
-        ORDER BY score.value ASC');
-        $request->execute([
-            'id' => $id
-        ]);
-        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+    // public function getOpByDestIdByScoreUp(int $id):array
+    // {
+    //     $request = $this->db->prepare('SELECT tour_operator.* 
+    //     FROM tour_operator 
+    //     LEFT JOIN score ON tour_operator.id = score.tour_operator_id 
+    //     WHERE tour_operator.id = :id 
+    //     ORDER BY score.value ASC');
+    //     $request->execute([
+    //         'id' => $id
+    //     ]);
+    //     $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return $opByDestIdByScoreUpData;
-    }
+    //     return $opByDestIdByScoreUpData;
+    // }
 
-    public function getOpByDestIdByScoreDown(int $id):array
-    {
-        $request = $this->db->prepare('SELECT tour_operator.* 
-        FROM tour_operator 
-        LEFT JOIN score ON tour_operator.id = score.tour_operator_id 
-        WHERE tour_operator.id = :id 
-        ORDER BY score.value DESC');
-        $request->execute([
-            'id' => $id
-        ]);
-        $opByDestIdByScoreDownData = $request->fetchAll(PDO::FETCH_ASSOC);
+    // public function getOpByDestIdByScoreDown(int $id):array
+    // {
+    //     $request = $this->db->prepare('SELECT tour_operator.* 
+    //     FROM tour_operator 
+    //     LEFT JOIN score ON tour_operator.id = score.tour_operator_id 
+    //     WHERE tour_operator.id = :id 
+    //     ORDER BY score.value DESC');
+    //     $request->execute([
+    //         'id' => $id
+    //     ]);
+    //     $opByDestIdByScoreDownData = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return $opByDestIdByScoreDownData;
-    }
+    //     return $opByDestIdByScoreDownData;
+    // }
 
-    public function getOpByDestIdByPriceUp(int $id):array
-    {
-        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
-        $request->execute([
-            'id' => $id
-        ]);
-        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+    // public function getOpByDestIdByPriceUp(int $id):array
+    // {
+    //     $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
+    //     $request->execute([
+    //         'id' => $id
+    //     ]);
+    //     $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return $opByDestIdByScoreUpData;
-    }
+    //     return $opByDestIdByScoreUpData;
+    // }
 
-    public function getOpByDestIdByPriceDown(int $id):array
-    {
-        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
-        $request->execute([
-            'id' => $id
-        ]);
-        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+    // public function getOpByDestIdByPriceDown(int $id):array
+    // {
+    //     $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
+    //     $request->execute([
+    //         'id' => $id
+    //     ]);
+    //     $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return $opByDestIdByScoreUpData;
-    }
+    //     return $opByDestIdByScoreUpData;
+    // }
 
-    public function getOpByDestIdByReviewUp(int $id):array
-    {
-        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
-        $request->execute([
-            'id' => $id
-        ]);
-        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+    // public function getOpByDestIdByReviewUp(int $id):array
+    // {
+    //     $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
+    //     $request->execute([
+    //         'id' => $id
+    //     ]);
+    //     $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return $opByDestIdByScoreUpData;
-    }
+    //     return $opByDestIdByScoreUpData;
+    // }
 
-    public function getOpByDestIdByReviewDown(int $id):array
-    {
-        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
-        $request->execute([
-            'id' => $id
-        ]);
-        $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
+    // public function getOpByDestIdByReviewDown(int $id):array
+    // {
+    //     $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value ASC');
+    //     $request->execute([
+    //         'id' => $id
+    //     ]);
+    //     $opByDestIdByScoreUpData = $request->fetchAll(PDO::FETCH_ASSOC);
 
-        return $opByDestIdByScoreUpData;
-    }
+    //     return $opByDestIdByScoreUpData;
+    // }
 
     public function getOpByDestIdBySearch(int $id, string $search):array
     {
-        $request = $this->db->prepare('SELECT * FROM tour_operator INNER JOIN score ON tour_operator.id = score.tour_operator_id WHERE tour_operator.id = :id ORDER BY score.value DESC');
+        $request = $this->db->prepare('SELECT * FROM tour_operator WHERE id = :id AND name LIKE :search');
         $request->execute([
-            'id' => $id
+            'id' => $id,
+            'name' => '%' . $search . '%'
         ]);
         $getOpByDestIdBySearchData = $request->fetchAll(PDO::FETCH_ASSOC);
 
