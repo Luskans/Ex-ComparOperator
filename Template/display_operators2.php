@@ -58,7 +58,7 @@ if (isset($_GET['price']) && ($_GET['price'] === 'up')) {
 // var_dump($operators);
 
 $totalOperators = 0; // Used to calculate display frequency of pubs
-$pubsFrequency = rand(4, 6); // Display a pub every 4 to 6 operators
+$pubsFrequency = rand(2, 4); // Display a pub every 4 to 6 operators
 foreach ($operators as $operator) {
 
     if ($totalOperators != 0 && $totalOperators % $pubsFrequency === 0) { ?> <!-- PUB -->
