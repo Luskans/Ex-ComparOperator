@@ -132,6 +132,5 @@ $operatorsData = $manager->getThreeRandomPremiumOperators();
     </section>
 
 </main>
-
 <script src="./Utilities/Js/index.js"></script>
 <?php include('./Template/template_footer.php'); ?>

@@ -4,24 +4,30 @@ require_once('./Utilities/Config/db.php');
 require_once('./Utilities/Config/autoload.php');
 require_once('./Model/Repository/Manager.php');
 
+session_start();
 
 
+
+if (isset($_SESSION['admin'])&&
+$_SESSION['admin'] ===1) {
+    header("Location:./admin/admin_dashboard.php");
+    exit;
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
 
-    require_once "db.php"; // Подключение к базе данных
+    var_dump($_POST);
 
-    // Получение хеша пароля из базы данных
-    $stmt = $pdo->prepare("SELECT id, password FROM users WHERE username = ?");
-    $stmt->execute([$username]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $username = 'admin';
+    $password = 'adminPassword';
 
-    if ($user && password_verify($password, $user["password"])) {
-        // Вход выполнен успешно, устанавливаем флаг авторизации
-        $_SESSION["user_id"] = $user["id"];
-        header("Location: admin.php");
+
+    $manager = new Manager($db);
+
+    if ($_POST['username'] === $username && $_POST['password'] === $password) {
+        
+        $_SESSION["admin"] = 1;
+        header("Location:./admin/admin_dashboard.php");
         exit;
     } else {
         $error_message = "Error.";
@@ -34,10 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход</title>
+    <title>LOGIN</title>
 </head>
 <body>
-    <h2>Вход</h2>
+    <h2>LOGIN</h2>
     <?php if (isset($error_message)): ?>
         <p style="color: red;"><?php echo $error_message; ?></p>
     <?php endif; ?>

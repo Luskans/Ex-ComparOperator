@@ -117,6 +117,10 @@ class TourOperator {
         }
     }
 
+    public function addDestinationOneByOne(Destination $destination) {
+        $this->destinations[] = $destination;
+    }
+
     public function addReviews(array $reviewsCollection) {
         foreach ($reviewsCollection as $review) {
             $this->reviews[] = $review;
