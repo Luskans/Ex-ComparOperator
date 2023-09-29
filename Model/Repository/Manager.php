@@ -1,6 +1,7 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/Ex-ComparOperator/Utilities/Config/autoload.php');
+// require_once($_SERVER['DOCUMENT_ROOT'] . '/Ex-ComparOperator/Utilities/Config/autoload.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Utilities/Config/autoload.php');
 
 class Manager
 {
