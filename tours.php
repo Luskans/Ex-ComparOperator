@@ -1,14 +1,10 @@
 <?php include('./Template/template_header.php'); ?>
 
 <?php
-require_once('./Utilities/Config/db.php');
-require_once('./Model/Repository/Manager.php');
-require_once('./Model/Entity/TourOperator.php');
-require_once('./Model/Entity/Destination.php');
-require_once('./Model/Entity/Review.php');
-require_once('./Model/Entity/Score.php');
-require_once('./Model/Entity/Author.php');
-require_once('./Model/Entity/Certificate.php');
+// require_once('./Utilities/Config/db.php');
+// require_once('./Utilities/Config/autoload.php');
+require_once(__DIR__ . '/Utilities/Config/db.php');
+require_once(__DIR__ . '/Utilities/Config/autoload.php');
 require_once('./Template/filters_functions.php');
 session_start();
 

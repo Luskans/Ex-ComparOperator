@@ -1,14 +1,15 @@
 <?php include('./Template/template_header.php'); ?>
 
 <?php
-require_once('./Utilities/Config/db.php');
-require_once('./Model/Repository/Manager.php');
-require_once('./Model/Entity/TourOperator.php');
-require_once('./Model/Entity/Destination.php');
-require_once('./Model/Entity/Review.php');
-require_once('./Model/Entity/Score.php');
-require_once('./Model/Entity/Author.php');
-require_once('./Model/Entity/Certificate.php');
+
+// var_dump($_SERVER['DOCUMENT_ROOT']);
+// var_dump(__DIR__);
+// die();
+require_once(__DIR__ . '/Utilities/Config/db.php');
+require_once(__DIR__ . '/Utilities/Config/autoload.php');
+// require_once(__DIR__ . '/Utilities/Config/db.php');
+// require_once('./Utilities/Config/db.php');
+// require_once('./Utilities/Config/autoload.php');
 session_start();
 
 $manager = new Manager($db);

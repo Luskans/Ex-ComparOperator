@@ -55,8 +55,12 @@
         </div>
         
     <!------- Barre de recherche -------> 
-    <form action="./tours.php?<?= $_SESSION['operatorPage'] ?>&review=down" method="get" class="search d-flex" role="search">
+    <!-- <form action="./tours.php?<?= $_SESSION['operatorPage'] ?>&review=down" method="get" class="search d-flex" role="search">
         <input name="search"  class="search__bar form-control me-2" placeholder="Rechercher...">
         <button class="btn btn-outline-light" type="submit">Go</button>
-    </form>
+    </form> -->
+    <div class="d-flex">
+        <input class="search__bar form-control me-2" placeholder="Rechercher...">
+        <button class="btn btn-outline-light">Go</button>
+    </div>
 </div>
